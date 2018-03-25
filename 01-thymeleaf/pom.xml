@@ -3,41 +3,63 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.agoncal.sample.json</groupId>
+  <artifactId>thymeleaf</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+  <name>01 - Thymeleaf</name>
+
+  <parent>
     <groupId>org.agoncal.sample.json</groupId>
-    <artifactId>thymeleaf</artifactId>
+    <artifactId>parent</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
-    <name>01 - Thymeleaf</name>
+  </parent>
 
-    <parent>
-        <groupId>org.agoncal.sample.json</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.0</version>
-    </parent>
+  <properties>
+    <version.jsonschema2pojo>0.5.0</version.jsonschema2pojo>
+    <version.commons-lang>3.5</version.commons-lang>
+    <version.jackson>2.8.10</version.jackson>
+  </properties>
 
-    <dependencies>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${version.commons-lang}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${version.jackson}</version>
+    </dependency>
+  </dependencies>
 
-    <build>
-        <finalName>sampleJsonThymeleaf</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-help-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+  <build>
+    <finalName>sampleJsonThymeleaf</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.jsonschema2pojo</groupId>
+        <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+        <version>${version.jsonschema2pojo}</version>
+        <configuration>
+          <sourceDirectory>${basedir}/src/main/resources/document</sourceDirectory>
+          <sourceType>json</sourceType>
+          <!--<sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>-->
+          <!--<sourceType>jsonschema</sourceType>-->
+          <targetPackage>org.agoncal.sample.json.invoice</targetPackage>
+          <useCommonsLang3>true</useCommonsLang3>
+          <targetLanguage>java</targetLanguage>
+          <targetVersion>${version.java}</targetVersion>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

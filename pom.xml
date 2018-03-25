@@ -3,19 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.agoncal.sample.json</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.0</version>
-    <packaging>pom</packaging>
-    <name>00 - Parent of JSON Samples</name>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.agoncal.sample.json</groupId>
+  <artifactId>parent</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <name>00 - Parent of JSON Samples</name>
 
-    <modules>
-        <module>01-thymeleaf</module>
-    </modules>
+  <modules>
+    <module>01-thymeleaf</module>
+  </modules>
 
-    <properties>
-        <version.java>1.8</version.java>
+  <properties>
+    <version.java>1.8</version.java>
 
     <!-- Test -->
     <version.junit>5.0.2</version.junit>
@@ -57,18 +57,18 @@
     <maven>3.0.0</maven>
   </prerequisites>
 
-    <dependencyManagement>
-        <dependencies>
+  <dependencyManagement>
+    <dependencies>
 
-            <!-- Test -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${version.junit}</version>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+      <!-- Test -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${version.junit}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
 
   <build>
@@ -261,11 +261,11 @@
             <argLine>-Duser.language=en -Duser.country=EN</argLine>
           </configuration>
           <dependencies>
-              <dependency>
-                <groupId>org.junit.platform</groupId>
-                <artifactId>junit-platform-surefire-provider</artifactId>
-                <version>${version.junit.platform}</version>
-              </dependency>
+            <dependency>
+              <groupId>org.junit.platform</groupId>
+              <artifactId>junit-platform-surefire-provider</artifactId>
+              <version>${version.junit.platform}</version>
+            </dependency>
           </dependencies>
         </plugin>
         <plugin>
